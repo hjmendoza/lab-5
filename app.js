@@ -10,14 +10,13 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sum(a, b) {
-  var addition = a + b;
-  var statement = 'The sum of ' + a + ' and ' + b + ' is ' + addition + '.';
-  var array = [addition, statement];
-  return array;
-  //eslint-disable-line
+  var total = Array.prototype.reduce.call(arguments, function(a, b) {
+    return a + b;
+  });
+  var statement = 'The sum of ' + a + ' and ' + b + ' is ' + total + '.';
+  var array1 = [total, statement];
+  return array1;
 }
-
-// Here is the test for sum(); uncomment it to run it
 testSum(4, 7);
 
 
@@ -34,12 +33,13 @@ Test this function by hand in the console to get it working, and when you think 
 
 
 // Write your code here
-function multiply(a, b) {
-  var multiplied = a * b;
-  var statement = 'The product of ' + a + ' and ' + b + ' is ' + multiplied + '.';
-  var array = [multiplied, statement];
-  return array;
-  //eslint-disable-line
+function multiply(a, b){
+  var total = Array.prototype.reduce.call(arguments, function(a, b) {
+    return a * b;
+  });
+  var statement = 'The product of ' + a + ' and ' + b + ' is ' + total + '.';
+  var array2 = [total, statement];
+  return array2;
 }
 
 
@@ -64,12 +64,19 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) {
+  var total1 = sum(a, b, c);
+  total1.pop();
+  var total2 = multiply(a, b, c);
+  total2.pop();
+  var statement1 = a + ' and ' + b + ' and ' + c + ' sum to ' + total1 + '.';
+  var statement2 = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + total2 + '.';
+  var array3 = [total1[0], total2[0], statement1, statement2];
+  return array3;
   //eslint-disable-line
 }
 
-
 // Here is the test for sumAndMultiply(); uncomment it to run it
-// testSumAndMultiply(4,7,5);
+testSumAndMultiply(4,7,5);
 
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
