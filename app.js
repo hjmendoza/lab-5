@@ -99,11 +99,13 @@ var testArray = [2, 3, 4]; //eslint-disable-line
 
 
 function sumArray(testArray) {
-  var total1 = sum(testArray);
-  total1.pop();
-  var string1 = testArray.toString();
-  var array4 = [string1 + ' was passed in as an array of numbers, and '];
-  return array4;
+  var sum1 = sum(testArray[0], testArray[1]);
+  var resum1 = sum1[0];
+  var sum2 = sum(resum1, testArray[2]);
+  var totalsum = sum2[0];
+  var arrayStatement = testArray.toString() + ' was passed in as an array of numbers, and ' + totalsum + ' is their sum.'
+  var totalarray = [totalsum, arrayStatement];
+  return totalarray;
   //eslint-disable-line
 }
 
@@ -111,7 +113,7 @@ function sumArray(testArray) {
 // Here is the test for sumArray(); uncomment it to run it
 
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
