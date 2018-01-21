@@ -7,16 +7,16 @@ Write a function called sum() that takes in two numbers as arguments and then re
 
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSum() function below and check the console to see if the test passes.*/
 
+// Used https://stackoverflow.com/questions/38566788/return-sum-of-all-arguments-passed-to-function to figure out total variable.
 
 // Write your code here
 function sum(a, b) {
-  var total = Array.prototype.reduce.call(arguments, function(a, b) {
-    return a + b;
-  });
-  var statement = 'The sum of ' + a + ' and ' + b + ' is ' + total + '.';
-  var array1 = [total, statement];
-  return array1;
+  var addition = a + b;
+  var statement = 'The sum of ' + a + ' and ' + b + ' is ' + addition + '.';
+  var array = [addition, statement];
+  return array;
 }
+
 testSum(4, 7);
 
 
@@ -33,19 +33,16 @@ Test this function by hand in the console to get it working, and when you think 
 
 
 // Write your code here
-function multiply(a, b){
-  var total = Array.prototype.reduce.call(arguments, function(a, b) {
-    return a * b;
-  });
-  var statement = 'The product of ' + a + ' and ' + b + ' is ' + total + '.';
-  var array2 = [total, statement];
-  return array2;
+function multiply(a, b) {
+  var multiplied = a * b;
+  var statement = 'The product of ' + a + ' and ' + b + ' is ' + multiplied + '.';
+  var array = [multiplied, statement];
+  return array;
+  //eslint-disable-line
 }
-
 
 // Here is the test for multiply(); uncomment it to run it
 testMultiply(5,9);
-
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -64,14 +61,18 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) {
-  var total1 = sum(a, b, c);
-  total1.pop();
-  var total2 = multiply(a, b, c);
-  total2.pop();
-  var statement1 = a + ' and ' + b + ' and ' + c + ' sum to ' + total1 + '.';
-  var statement2 = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + total2 + '.';
-  var array3 = [total1[0], total2[0], statement1, statement2];
-  return array3;
+  var sum1 = sum(a, b);
+  var resum1 = sum1[0];
+  var sum2 = sum(resum1, c);
+  var totalsum = sum2[0];
+  var multiply1 = multiply(a, b);
+  var remultiply1 = multiply1[0];
+  var multiply2 = multiply(remultiply1, c);
+  var totalmultiply = multiply2[0];
+  var sumStatement = a + ' and ' + b + ' and ' + c + ' sum to ' + totalsum + '.';
+  var multiplyStatement = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + totalmultiply + '.';
+  var array = [totalsum, totalmultiply, sumStatement, multiplyStatement];
+  return array;
   //eslint-disable-line
 }
 
@@ -98,6 +99,11 @@ var testArray = [2, 3, 4]; //eslint-disable-line
 
 
 function sumArray(testArray) {
+  var total1 = sum(testArray);
+  total1.pop();
+  var string1 = testArray.toString();
+  var array4 = [string1 + ' was passed in as an array of numbers, and '];
+  return array4;
   //eslint-disable-line
 }
 
@@ -124,6 +130,7 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(testArray) {
+  
   //eslint-disable-line
 }
 
